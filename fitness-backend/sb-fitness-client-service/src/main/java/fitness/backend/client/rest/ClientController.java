@@ -5,6 +5,7 @@ import fitness.backend.client.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-    @RequestMapping("/{firstName}/{lastName}")
+    @RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET, produces = "application/json")
     public List<Client> getOnFirstNameAndLastName(@PathVariable("firstName") String firstName,@PathVariable("lastName") String lastName) {
         return clientService.getClientsWithNameAndSurname(firstName, lastName);
     }
