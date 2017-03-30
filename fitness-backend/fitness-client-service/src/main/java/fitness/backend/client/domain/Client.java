@@ -1,5 +1,9 @@
 package fitness.backend.client.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import fitness.backend.utils.LocalDateSerializer;
+import fitness.backend.utils.LocalDateDeserializer;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -22,7 +26,11 @@ public class Client {
 
     private String lastName;
 
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate dateOfBirth;
+
+    private String email;
 
 
 }

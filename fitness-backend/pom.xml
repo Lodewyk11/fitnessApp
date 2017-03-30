@@ -10,7 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>sb-fitness-client-service</module>
+        <module>fitness-client-service</module>
+        <module>fitness-utils</module>
     </modules>
 
 </project>

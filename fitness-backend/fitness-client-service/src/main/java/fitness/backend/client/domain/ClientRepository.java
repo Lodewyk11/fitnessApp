@@ -4,9 +4,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
-
-
 import java.time.LocalDate;
+
 
 public interface ClientRepository extends CrudRepository<Client, Integer>, JpaSpecificationExecutor<Client> {
    class Specifications{
@@ -26,7 +25,12 @@ public interface ClientRepository extends CrudRepository<Client, Integer>, JpaSp
            return (root, query, cb) -> cb.lessThan(root.get("birthDate"), limit);
        }
 
-       public Sort orderByLastNameDesc() {
+       public static Specification<Client> emailIs(String email) {
+           return (root, query, cb) -> cb.equal(root.get("email"), email);
+       }
+
+
+       public static Sort orderByLastNameDesc() {
            return new Sort(Sort.Direction.DESC, "lastName");
        }
    }
