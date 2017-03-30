@@ -38,8 +38,10 @@ public class ClientController {
         try {
             clientService.createClient(client);
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println("Couldn't save client: " + e.getMessage());
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Couldn't save client:" + e.getMessage(), HttpStatus.BAD_REQUEST);
+
         }
         return ResponseEntity.ok().build();
     }
