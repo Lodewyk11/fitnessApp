@@ -45,6 +45,4 @@ public class Client {
     private String passportNumber;
 
     private String phoneNumber;
-
-
 }
