@@ -29,6 +29,10 @@ public interface ClientRepository extends CrudRepository<Client, Integer>, JpaSp
            return (root, query, cb) -> cb.equal(root.get("email"), email);
        }
 
+       public static Specification<Client> clientIdIs(Long clientId) {
+           return (root, query, cb) -> cb.equal(root.get("id"), clientId);
+       }
+
 
        public static Sort orderByLastNameDesc() {
            return new Sort(Sort.Direction.DESC, "lastName");

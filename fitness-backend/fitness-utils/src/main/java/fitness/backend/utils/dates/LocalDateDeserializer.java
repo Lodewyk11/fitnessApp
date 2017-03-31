@@ -1,4 +1,4 @@
-package fitness.backend.utils;
+package fitness.backend.utils.dates;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

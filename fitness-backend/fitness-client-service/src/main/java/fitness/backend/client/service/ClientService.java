@@ -34,7 +34,12 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
-    public void createClient(Client client) {
-        repository.save(client);
+    public Client getClientByClientId(Long clientId) {
+        return repository.findOne(
+                where(clientIdIs(clientId)));
+    }
+
+    public Client createClient(Client client) {
+        return repository.save(client);
     }
 }

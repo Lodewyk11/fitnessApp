@@ -4,7 +4,7 @@
 
     <groupId>fitness.backend</groupId>
     <artifactId>fitness-backend</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>

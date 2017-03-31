@@ -26,24 +26,24 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getAllClients());
     }
 
-    @RequestMapping(value = "/{email}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Client> getClientWithEmailAddress(@PathVariable("email") String email) {
-        Client client = clientService.getClientWithEmailAddress(email);
-        return client == null ? new ResponseEntity(HttpStatus.NOT_FOUND) : ResponseEntity.ok(client);
+    @RequestMapping(value = "/{clientId}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Client> getClientByClientId(@PathVariable("clientId") Long clientId) {
+        return ResponseEntity.ok(clientService.getClientByClientId(clientId));
     }
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity createClient(@RequestBody Client client) {
+    public ResponseEntity<Long> createClient(@RequestBody Client client) {
+        Client savedClient;
         try {
-            clientService.createClient(client);
+            savedClient = clientService.createClient(client);
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Couldn't save client: " + e.getMessage());
             return new ResponseEntity("Couldn't save client:" + e.getMessage(), HttpStatus.BAD_REQUEST);
 
         }
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(savedClient.getId());
     }
 
 }

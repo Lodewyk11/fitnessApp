@@ -4,7 +4,7 @@
 
 	<groupId>fitness.backend</groupId>
 	<artifactId>fitness-client-service</artifactId>
-	<version>1.0-RELEASE</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>fitness-client-service</name>
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>fitness.backend</groupId>
             <artifactId>fitness-utils</artifactId>
-            <version>1.0-RELEASE</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 	</dependencies>
 

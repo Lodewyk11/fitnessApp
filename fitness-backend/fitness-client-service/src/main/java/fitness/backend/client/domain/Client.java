@@ -9,13 +9,15 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+import fitness.backend.utils.validation.idnumber.SaIdNumber;
+import fitness.backend.utils.validation.general.CheckAtLeastOneNotNull;
 
 @Entity
 @Data
 @NoArgsConstructor
 @Table(uniqueConstraints =
-@UniqueConstraint(columnNames = {"email"}))
+@UniqueConstraint(columnNames = {"email", "saIdNumber", "passportNumber"}))
+@CheckAtLeastOneNotNull(fieldNames = {"saIdNumber", "passportNumber"})
 public class Client {
 
     @Id
@@ -34,8 +36,15 @@ public class Client {
     private LocalDate dateOfBirth;
 
     @NonNull
-    @Email
+    @Email(message = "The specified email address is already in use")
     private String email;
+
+    @SaIdNumber
+    private String saIdNumber;
+
+    private String passportNumber;
+
+    private String phoneNumber;
 
 
 }
